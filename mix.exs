@@ -18,7 +18,7 @@ defmodule Apiv2.Mixfile do
   def application do
     [mod: {Apiv2, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger,
-                    :phoenix_ecto, :mariaex]]
+                    :phoenix_ecto, :postgrex, :cors_plug]]
   end
 
   # Specifies which paths to compile per environment
@@ -29,12 +29,14 @@ defmodule Apiv2.Mixfile do
   #
   # Type `mix help deps` for examples and options
   defp deps do
-    [{:phoenix, "~> 0.14"},
-     {:phoenix_ecto, "~> 0.4"},
-     {:mariaex, ">= 0.0.0"},
+    [{:phoenix, "~> 0.15"},
+     {:phoenix_ecto, "~> 0.8"},
+     {:mariaex, ">= 0.0.0", only: [:test, :dev]},
+     {:postgrex, "~> 0.9.1"},
      {:phoenix_html, "~> 1.1"},
      {:phoenix_live_reload, "~> 0.4", only: :dev},
      {:cowboy, "~> 1.0"},
-     {:timex, "~> 0.15.0"}]
+     {:timex, "~> 0.15.0"},
+     {:cors_plug, "~> 0.1.3"}]
   end
 end

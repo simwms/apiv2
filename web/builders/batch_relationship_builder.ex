@@ -17,14 +17,14 @@ defmodule Apiv2.BatchRelationshipBuilder do
   end
 
   def batch_on_create(nil), do: nil
-  def batch_on_create(batch_id) do
+  def batch_on_create(batch_id) when is_binary(batch_id) do
     batch = Repo.get! Batch, batch_id
     Batch.changeset(batch, %{"outgoing_count" => (batch.outgoing_count + 1)})
   end
   def batch_on_create(_), do: nil
 
   def batch_on_delete(nil), do: nil
-  def batch_on_delete(batch_id) do
+  def batch_on_delete(batch_id) when is_binary(batch_id) do
     batch = Repo.get! Batch, batch_id
     Batch.changeset(batch, %{"outgoing_count" => (batch.outgoing_count - 1)})
   end
@@ -47,6 +47,6 @@ defmodule Apiv2.BatchRelationshipBuilder do
     unless is_nil(changeset) do
       Repo.update! changeset
     end
-    batch_relationship = Repo.delete!(batch_relationship)
+    Repo.delete!(batch_relationship)
   end
 end

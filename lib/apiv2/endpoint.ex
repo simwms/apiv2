@@ -26,10 +26,16 @@ defmodule Apiv2.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
 
+  plug CORSPlug, 
+    headers: ["Authorization", "Content-Type", "Accept", "Origin",
+              "User-Agent", "DNT","Cache-Control", "X-Mx-ReqToken",
+              "Keep-Alive", "X-Requested-With", "If-Modified-Since",
+              "X-CSRF-Token", "remember_token"]
+
   plug Plug.Session,
     store: :cookie,
     key: "_apiv2_key",
     signing_salt: "q6Z3FDS/"
 
-  plug :router, Apiv2.Router
+  plug Apiv2.Router
 end

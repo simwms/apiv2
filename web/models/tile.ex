@@ -15,33 +15,9 @@ defmodule Apiv2.Tile do
     has_many :cameras, Apiv2.Camera, foreign_key: :tile_id
     has_many :batches, Apiv2.Batch, foreign_key: :warehouse_id
 
-    # Jose Valim says here https://groups.google.com/forum/#!topic/elixir-ecto/iTCBgv2ZhxQ
-    # that he will look into building a has_many that supports queries... but until then,
-    # I'll have to roll my own temporary solution
-    # has_many :entering_trucks, Apiv2.Truck, foreign_key: :entry_scale_id
-    # has_many :exiting_trucks, Apiv2.Truck, foreign_key: :exit_scale_id
-    # has_many :loading_trucks, Apiv2.Truck, foreign_key: :dock_id
-    association :many,
-      :loading_trucks,
-      Apiv2.HasManyScope,
-      scope: Apiv2.TruckQuery.loading_trucks,
-      foreign_key: :dock_id,
-      queryable: Apiv2.Truck
-
-    association :many,
-      :exiting_trucks,
-      Apiv2.HasManyScope,
-      scope: Apiv2.TruckQuery.exiting_trucks,
-      foreign_key: :exit_scale_id,
-      queryable: Apiv2.Truck
-
-    association :many,
-      :entering_trucks,
-      Apiv2.HasManyScope,
-      scope: Apiv2.TruckQuery.entering_trucks,
-      foreign_key: :entry_scale_id,
-      queryable: Apiv2.Truck
-
+    has_many :entering_trucks, Apiv2.Truck, foreign_key: :entry_scale_id
+    has_many :exiting_trucks, Apiv2.Truck, foreign_key: :exit_scale_id
+    has_many :loading_trucks, Apiv2.Truck, foreign_key: :dock_id
 
     timestamps 
   end

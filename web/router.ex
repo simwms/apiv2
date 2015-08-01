@@ -32,8 +32,4 @@ defmodule Apiv2.Router do
     resources "/accounts", AccountController, only: [:show]
   end
 
-  socket "/apiv2", Apiv2 do
-    channel "trucks:*", TruckChannel
-    channel "appointments:*", AppointmentChannel
-  end
 end

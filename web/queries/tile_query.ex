@@ -1,8 +1,13 @@
 defmodule Apiv2.TileQuery do
   import Ecto.Query
   alias Apiv2.Tile
+  alias Apiv2.TruckQuery
 
-  @preload_fields ~w(cameras entering_trucks exiting_trucks loading_trucks batches)a
+  @preload_fields [:cameras, :batches,
+    loading_trucks: TruckQuery.loading_trucks,
+    exiting_trucks: TruckQuery.exiting_trucks,
+    entering_trucks: TruckQuery.entering_trucks]
+
   @default_scope from t in Tile,
     select: t
   def index(params) do
