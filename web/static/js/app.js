@@ -2,33 +2,12 @@ import {Socket} from "phoenix"
 
 // let socket = new Socket("/ws")
 // socket.connect()
-// socket.join("topic:subtopic", {}).receive("ok", chan => {
+// let chan = socket.chan("topic:subtopic", {})
+// chan.join().receive("ok", resp => {
+//   console.log("Joined succesffuly!", resp)
 // })
 
-// function drawTile(svg) {
-//   svg.append()
-// };
+let App = {
+}
 
-// function drawSVG(data) {
-//   d3.select("#svg-canvas")
-//   .data(data)
-//   .enter()
-//   .call(drawTile);
-// };
-
-// function requestData() {
-//   return $.ajax("/apiv2/tiles");
-// };
-
-// let App = {
-//   run() {
-//     requestData()
-//     .then(function(data){
-//       drawSVG(data);
-//     })
-//   }
-// };
-
-// App.run();
-let App = {};
 export default App

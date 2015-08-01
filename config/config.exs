@@ -9,8 +9,8 @@ use Mix.Config
 config :apiv2, Apiv2.Endpoint,
   url: [host: "localhost"],
   root: Path.dirname(__DIR__),
-  secret_key_base: "b1un829l/vXKFS9QRiDGUcwyBbj+o6AFANP2cD9ACGySXY/8jEta+i0dsLXj8Dle",
-  debug_errors: false,
+  secret_key_base: "BYKoa2KRXtrmJkzj9Qg8R7lmIkhv3StXVbgrpL1Fb0DhMvRsFlFX2BpkUmQfTz6Q",
+  render_errors: [default_format: "html"],
   pubsub: [name: Apiv2.PubSub,
            adapter: Phoenix.PubSub.PG2]
 

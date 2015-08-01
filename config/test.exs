@@ -11,8 +11,8 @@ config :logger, level: :warn
 
 # Configure your database
 config :apiv2, Apiv2.Repo,
-  adapter: Ecto.Adapters.MySQL,
-  username: "root",
-  password: "",
-  database: "simwms_test",
-  size: 1 # Use a single connection for transactional tests
+  adapter: Ecto.Adapters.Postgres,
+  username: "ia",
+  password: "1234567",
+  database: "apiv2_test",
+  pool: Ecto.Adapters.SQL.Sandbox

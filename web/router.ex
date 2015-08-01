@@ -12,6 +12,12 @@ defmodule Apiv2.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/", Apiv2 do
+    pipe_through :browser # Use the default browser stack
+
+    get "/", PageController, :index
+  end
+
   scope "/print", Apiv2 do
     pipe_through :browser # Use the default browser stack
     get "/reports", ReportController, :index
@@ -31,5 +37,4 @@ defmodule Apiv2.Router do
     resources "/pictures", PictureController, except: [:edit, :new, :show, :index]
     resources "/accounts", AccountController, only: [:show]
   end
-
 end

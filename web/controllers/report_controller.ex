@@ -10,6 +10,8 @@ defmodule Apiv2.ReportController do
       appointments: appointments,
       batches: batches
     ]
-    render(conn, "index.html", assigns)
+    conn
+    |> Phoenix.Controller.put_layout(Apiv2.LayoutView, "print")
+    |> render("index.html", assigns)
   end
 end

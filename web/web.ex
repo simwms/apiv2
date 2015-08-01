@@ -26,12 +26,10 @@ defmodule Apiv2.Web do
     quote do
       use Phoenix.Controller
 
-      # Alias the data repository and import query/model functions
       alias Apiv2.Repo
       import Ecto.Model
       import Ecto.Query, only: [from: 2]
 
-      # Import URL helpers from the router
       import Apiv2.Router.Helpers
     end
   end
@@ -43,11 +41,10 @@ defmodule Apiv2.Web do
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_csrf_token: 0, get_flash: 2, view_module: 1]
 
-      # Import URL helpers from the router
-      import Apiv2.Router.Helpers
-
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
+
+      import Apiv2.Router.Helpers
     end
   end
 
@@ -61,7 +58,6 @@ defmodule Apiv2.Web do
     quote do
       use Phoenix.Channel
 
-      # Alias the data repository and import query/model functions
       alias Apiv2.Repo
       import Ecto.Model
       import Ecto.Query, only: [from: 2]
