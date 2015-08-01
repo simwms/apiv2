@@ -48,11 +48,11 @@ config :logger, level: :info
 
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
-config :core, Core.Endpoint,
+config :core, Apiv2.Endpoint,
   secret_key_base: System.get_env("SECRET_KEY_BASE")
 
 # Configure your database, trivial change to trigger rebuild
-config :core, Core.Repo,
+config :core, Apiv2.Repo,
   adapter: Ecto.Adapters.Postgres,
   url: System.get_env("DATABASE_URL"),
   size: 20 # The amount of database connections in the pool
