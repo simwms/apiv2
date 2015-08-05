@@ -32,4 +32,5 @@ defmodule Apiv2.AppointmentMeta do
   def count(params) do
     params |> AppointmentQuery.pagination |> Repo.one
   end
+
 end

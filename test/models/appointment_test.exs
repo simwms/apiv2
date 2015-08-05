@@ -4,6 +4,7 @@ defmodule Apiv2.AppointmentTest do
   alias Apiv2.Appointment
 
   @valid_attrs %{
+    appointment_type: "dropoff",
     company: "some content", 
     expected_at: %{day: 17, hour: 14, min: 0, month: 4, year: 2010}, 
     material_description: "some content", 
@@ -20,7 +21,7 @@ defmodule Apiv2.AppointmentTest do
 
   test "the hook should fire after insertion" do
     Appointment.changeset(%Appointment{}, @valid_attrs)
-    |> Repo.insert
+    |> Repo.insert!
     |> (fn appointment -> appointment.permalink end).()
     |> assert
   end

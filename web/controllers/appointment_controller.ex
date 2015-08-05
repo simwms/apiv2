@@ -11,7 +11,7 @@ defmodule Apiv2.AppointmentController do
     |> Apiv2.AppointmentQuery.index 
     |> Repo.all
     |> Repo.preload(AppointmentQuery.preload_fields)
-    meta = AppointmentMeta.generate params
+    meta = params |> AppointmentMeta.generate
     render(conn, "index.json", appointments: appointments, meta: meta)
   end
 

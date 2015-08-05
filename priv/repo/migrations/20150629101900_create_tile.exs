@@ -27,14 +27,14 @@ defmodule Apiv2.Repo.Migrations.CreateTile do
     %{
       "tile_type" => "barn",
       "x" => 2,
-      "y" => 1,
+      "y" => 2,
       "width" => 1.0,
       "height" => 1.0
     },
     %{
       "tile_type" => "warehouse",
       "x" => 2,
-      "y" => 2,
+      "y" => 3,
       "width" => 1.0,
       "height" => 1.0
     },
@@ -42,14 +42,14 @@ defmodule Apiv2.Repo.Migrations.CreateTile do
       "tile_type" => "scale",
       "tile_name" => "entrance scale",
       "x" => 1,
-      "y" => 0,
+      "y" => 1,
       "width" => 1.0,
       "height" => 1.0
     },
     %{
       "tile_type" => "road",
       "x" => 1,
-      "y" => 1,
+      "y" => 2,
       "width" => 1.0,
       "height" => 1.0
     }

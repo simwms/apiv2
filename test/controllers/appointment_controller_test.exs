@@ -3,6 +3,7 @@ defmodule Apiv2.AppointmentControllerTest do
 
   alias Apiv2.Appointment
   @valid_attrs %{
+    appointment_type: "dropoff",
     company: "some content", 
     expected_at: %{day: 17, hour: 14, min: 0, month: 4, year: 2010}, 
     material_description: "some content", 
@@ -14,14 +15,14 @@ defmodule Apiv2.AppointmentControllerTest do
     {:ok, conn: conn}
   end
 
-  # test "lists all entries on index", %{conn: conn} do
-  #   conn = get conn, appointment_path(conn, :index)
-  #   assert json_response(conn, 200)["appointment"] == []
-  # end
+  test "lists all entries on index", %{conn: conn} do
+    conn = get conn, appointment_path(conn, :index)
+    assert json_response(conn, 200)["appointments"]
+  end
 
   test "shows chosen resource", %{conn: conn} do
-    appointment = Repo.insert %Appointment{}
-    conn = get conn, appointment_path(conn, :show, appointment)
+    appointment = Repo.insert! %Appointment{}
+    conn = get conn, appointment_path(conn, :show, appointment.id)
     assert json_response(conn, 200)["appointment"]["id"] == appointment.id
   end
 
@@ -31,6 +32,7 @@ defmodule Apiv2.AppointmentControllerTest do
     assert json_response(conn, 200)["appointment"]["permalink"]
     assert Repo.get_by(Appointment, @valid_attrs)
   end
+
 
   # test "does not create resource and renders errors when data is invalid", %{conn: conn} do
   #   conn = post conn, appointment_path(conn, :create), appointment: @invalid_attrs

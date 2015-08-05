@@ -11,7 +11,7 @@ defmodule Apiv2.ReportController do
       batches: batches
     ]
     conn
-    |> Phoenix.Controller.put_layout(Apiv2.LayoutView, "print")
+    |> Phoenix.Controller.put_layout("print.html")
     |> render("index.html", assigns)
   end
 end

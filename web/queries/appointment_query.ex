@@ -39,18 +39,19 @@ defmodule Apiv2.AppointmentQuery do
 
   
   @default_index_query from a in Appointment,
-    where: is_nil(a.deleted_at),
-    order_by: [desc: a.expected_at]
+    where: is_nil(a.deleted_at)
 
   def index(%{"everything" => _} = params) do
     @default_index_query
     |> build_pagination_query(params)
     |> select([a], a)
+    |> order_by([a], desc: a.expected_at)
   end
   def index(params) do
     params
     |> index_core
     |> select([a], a)
+    |> order_by([a], desc: a.expected_at)
   end
 
   def index_core(params) do
